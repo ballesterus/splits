@@ -194,7 +194,7 @@ breakString "" = []
 breakString "," = []
 breakString xs = a : breakString rest
   where (a,b) = break (==',') xs
-        rest = tail b
+        rest = dropWhile (==',') b
 
 
 
