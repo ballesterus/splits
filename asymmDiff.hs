@@ -1,3 +1,4 @@
+
 import System.IO
 import System.Environment 
 import Newick
@@ -15,14 +16,16 @@ main = do
     tset = getleaves (f2)
     xss = splitDecomposition f1 tset
     yss = splitDecomposition f2 tset
-    resnum = asymmDiffnum xss yss
+    rnum = asymmDiffnum xss yss
+    n=length tset
+    rstd = fromIntegral rnum / fromIntegral (n-3)
     res = asymmDiffbipart f1 f2
     logfile  =  "diff_" ++ base1 ++ "_" ++ base2 ++ ".log"
     reftaxa = getleaves (f1)
 
     keyref = "key_" ++ base1 ++ ".txt"
     keysha = "key_"++ base1 ++ "_" ++ base2 ++ ".txt"
-  putStrLn $ "A-symmetric distances: "  ++ (args!!0) ++ "\t" ++ (args!!1) ++ "\t" ++ show resnum
+  putStrLn $ "A-symmetric distances: "  ++ (args!!0) ++ "\t" ++ (args!!1) ++ "\t" ++ show rnum ++ "\t" ++ show rstd
   writeFile logfile (unlines  res)
   writeFile keyref (concatMap (++",") reftaxa)
   writeFile keysha (concatMap (++",") tset)

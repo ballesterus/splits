@@ -17,7 +17,7 @@ main = do
       res = symmDiffnum xss yss
       n =   length tset
       nres = fromIntegral res / fromIntegral (2 * (n-3))
-  if sameTaxa f1 f2 then  putStrLn "The two trees have same leaves" else putStrLn "Warning: The trees different l leaves. Not shared taxa will be dropped." 
+  if sameTaxa f1 f2 then  putStrLn "The two trees have same leaves" else putStrLn "Warning: The trees have different set of leaves. The different taxa will be dropped from all bipartitions.." 
   putStrLn $ "Symmetric (RF) distances: "  ++ (args!!0) ++ "\t" ++ (args!!1) ++ "\t" ++ show res ++ "\t" ++ show nres
   hClose handle1
   hClose handle2

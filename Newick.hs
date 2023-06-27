@@ -142,7 +142,7 @@ lookupSplit s xs = foldr (\(k,v) acc -> if (issameSplit s k) then yay (k,v) else
 
 
 asymmDiffbipart :: Newick -> Newick -> [String] -- where the list of input strings are list of bipartitions from a reference tree (x) and a sample tree (y)
-asymmDiffbipart rtree atree = [a ++ " " ++ c ++ "    " ++ b ++ "  " ++ lookupSplit (b) asc  | (a,b,c) <- mas ]
+asymmDiffbipart rtree atree = [a ++ "\t" ++ c ++ "\t" ++ b ++ "\t" ++ lookupSplit (b) asc  | (a,b,c) <- mas ]
   where ftax = getleaves rtree
         stax = sharedTaxa  ftax (getleaves atree)
         sref = splitDecomposition rtree ftax

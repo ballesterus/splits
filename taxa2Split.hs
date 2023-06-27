@@ -15,4 +15,3 @@ main = do
   putStrLn res2
   
   hClose h1
-
